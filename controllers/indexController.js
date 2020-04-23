@@ -1,10 +1,11 @@
 class game_room {
     static game_room_dict = {};
 
-    constructor() {
+    constructor(first_user) {
         this.id = this._uuid();
-
         game_room.game_room_dict[this.id] = this;
+
+        this.user_list = [first_user]
     }
 
     _uuid() {
