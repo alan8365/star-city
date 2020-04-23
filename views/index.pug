@@ -1,5 +1,23 @@
 extends layout
 
 block content
-    h1= title
-    p Welcome to #{title}
+    div(class="row justify-content-center mt-5")
+        h3="遊戲大廳"
+    div(class="row mt-3")
+        div(class="col-3")
+            h4(class="mt-2")="遊戲列表"
+            ul(class="list-group")
+                li(class="list-group-item active")="十點半"
+                //li(class="list-group-item")="十點半"
+        div(class="col-9")
+            div(class="row")
+                div(class="col-4 offset-4")
+                    h4(class="text-center align-middle mt-2")="房間列表"
+                div.col-4
+                    div(class="row justify-content-end")
+                        div.col-auto
+                            button(type="button" class="btn btn-outline-primary")="建立遊戲房"
+            ul(class="list-group")
+                li(class="list-group-item")="在起跑點等著你"
+                li(class="list-group-item")="鍵盤快被敲碎啦"
+
