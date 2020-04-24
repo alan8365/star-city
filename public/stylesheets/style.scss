@@ -7,9 +7,78 @@ body {
 
 .left-50 {
   position: relative;
-  left: -50px
+  left: -50px;
 }
 
+.one-card-row {
+  img:nth-child(2) {
+    left: calc(50% - calc(71px / 2));
+  }
+}
+
+.two-card-row {
+  img:nth-child(2) {
+    left: calc(50% - calc(71px / 2) - 10px);
+  }
+
+  img:nth-child(3) {
+    left: calc(50% - calc(71px / 2) + 10px);
+  }
+}
+
+.three-card-row {
+  img:nth-child(2) {
+    left: calc(50% - calc(71px / 2) - 20px);
+  }
+
+  img:nth-child(3) {
+    left: calc(50% - calc(71px / 2));
+  }
+
+  img:nth-child(4) {
+    left: calc(50% - calc(71px / 2) + 20px);
+  }
+}
+
+.four-card-row {
+  img:nth-child(2) {
+    left: calc(50% - calc(71px / 2) - 30px);
+  }
+
+  img:nth-child(3) {
+    left: calc(50% - calc(71px / 2) - 10px);
+  }
+
+  img:nth-child(4) {
+    left: calc(50% - calc(71px / 2) + 10px);
+  }
+
+  img:nth-child(5) {
+    left: calc(50% - calc(71px / 2) + 30px);
+  }
+}
+
+.five-card-row {
+  img:nth-child(2) {
+    left: calc(50% - calc(71px / 2) - 40px);
+  }
+
+  img:nth-child(3) {
+    left: calc(50% - calc(71px / 2) - 20px);
+  }
+
+  img:nth-child(4) {
+    left: calc(50% - calc(71px / 2));
+  }
+
+  img:nth-child(5) {
+    left: calc(50% - calc(71px / 2) + 20px);
+  }
+
+  img:nth-child(6) {
+    left: calc(50% - calc(71px / 2) + 40px);
+  }
+}
 
 //h1 {
 //  color: #ffff85;
