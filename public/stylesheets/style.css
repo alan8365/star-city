@@ -9876,13 +9876,7 @@ h3 {
   }
 }
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-.left-50 {
-  position: relative;
-  left: -50px;
+  font: 14px "Microsoft JhengHei", Helvetica, Arial, sans-serif;
 }
 
 .one-card-row img:nth-child(2) {

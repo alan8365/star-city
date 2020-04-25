@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    div(class="row justify-content-center mt-5")
+    div(class="row justify-content-center mt-3")
         h3="莊家"
 
     div(class="row justify-content-center")
@@ -16,31 +16,23 @@ block content
         div.col
             div(id="dudu", class="row justify-content-center one-card-row")
                 img(src="images/cards/empty.gif")
-                img(class="position-absolute", src="images/cards/c1.gif")
             div(class="row justify-content-center")
                 h5="name"
         div.col
             div(class="row justify-content-center two-card-row")
                 img(src="images/cards/empty.gif")
-                img(class="position-absolute", src="images/cards/c1.gif")
-                img(class="position-absolute", src="images/cards/c2.gif")
             div(class="row justify-content-center")
                 h5="name"
         div.col
             div(class="row justify-content-center three-card-row")
                 img(src="images/cards/empty.gif")
-                img(class="position-absolute", src="images/cards/c1.gif")
-                img(class="position-absolute", src="images/cards/c2.gif")
-                img(class="position-absolute", src="images/cards/c3.gif")
             div(class="row justify-content-center")
                 h5="name"
+            div(class="row justify-content-center")
+                button(id="join-game", class="btn btn-primary")="加入"
         div.col
             div(class="row justify-content-center four-card-row")
                 img(src="images/cards/empty.gif")
-                img(class="position-absolute", src="images/cards/c1.gif")
-                img(class="position-absolute", src="images/cards/c2.gif")
-                img(class="position-absolute", src="images/cards/c3.gif")
-                img(class="position-absolute", src="images/cards/c4.gif")
             div(class="row justify-content-center")
                 h5="name"
         div.col
@@ -54,4 +46,6 @@ block content
             div(class="row justify-content-center")
                 h5="name"
 
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")
+    script(src="scripts/io-client.js")
     script(src="scripts/card-animate.js")
