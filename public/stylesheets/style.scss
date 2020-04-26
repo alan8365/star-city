@@ -4,6 +4,10 @@ body {
   font: 14px "Microsoft JhengHei", Helvetica, Arial, sans-serif;
 }
 
+.main-player {
+  color: red;
+}
+
 .one-card-row {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2));

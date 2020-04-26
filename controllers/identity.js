@@ -1,11 +1,9 @@
 class IdentityThing {
     static object_dict = {};
 
-    constructor(first_user) {
+    constructor() {
         this.id = this._uuid();
         IdentityThing.object_dict[this.id] = this;
-
-        this.user_list = [first_user]
     }
 
     _uuid() {

@@ -13,29 +13,35 @@ block content
             img(src="images/cards/b1fv.gif")
 
     div(class="row justify-content-center mt-5")
-        div.col
+        div(class="col player-area")
             div(id="dudu", class="row justify-content-center one-card-row")
                 img(src="images/cards/empty.gif")
             div(class="row justify-content-center")
-                h5="name"
-        div.col
+                h5(class="player-name")="name"
+            div(class="row justify-content-center")
+                button(class="btn btn-primary join-game" data-pos=0)="加入"
+        div(class="col player-area")
             div(class="row justify-content-center two-card-row")
                 img(src="images/cards/empty.gif")
             div(class="row justify-content-center")
-                h5="name"
-        div.col
+                h5(class="player-name")="name"
+            div(class="row justify-content-center")
+                button(class="btn btn-primary join-game" data-pos=1)="加入"
+        div(class="col player-area")
             div(class="row justify-content-center three-card-row")
                 img(src="images/cards/empty.gif")
             div(class="row justify-content-center")
-                h5="name"
+                h5(class="player-name")="name"
             div(class="row justify-content-center")
-                button(id="join-game", class="btn btn-primary")="加入"
-        div.col
+                button(class="btn btn-primary join-game" data-pos=2)="加入"
+        div(class="col player-area")
             div(class="row justify-content-center four-card-row")
                 img(src="images/cards/empty.gif")
             div(class="row justify-content-center")
-                h5="name"
-        div.col
+                h5(class="player-name")="name"
+            div(class="row justify-content-center")
+                button(class="btn btn-primary join-game" data-pos=3)="加入"
+        div(class="col player-area")
             div(class="row justify-content-center five-card-row")
                 img(src="images/cards/empty.gif")
                 img(class="position-absolute", src="images/cards/c1.gif")
@@ -44,8 +50,9 @@ block content
                 img(class="position-absolute", src="images/cards/c4.gif")
                 img(class="position-absolute", src="images/cards/c5.gif")
             div(class="row justify-content-center")
-                h5="name"
-
+                h5(class="player-name")="name"
+            div(class="row justify-content-center")
+                button(class="btn btn-primary join-game" data-pos=4)="加入"
     script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")
     script(src="scripts/io-client.js")
     script(src="scripts/card-animate.js")
