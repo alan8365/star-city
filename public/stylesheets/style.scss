@@ -8,6 +8,10 @@ body {
   color: red;
 }
 
+.on-load {
+  display: none;
+}
+
 .one-card-row {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2));

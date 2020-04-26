@@ -25,10 +25,12 @@ class GameroomDisplay {
             let player = player_list[i];
 
             if (player == null) {
-                join_game_btn.prop('disabled', false);
+                if (main_player_pos === -1)
+                    join_game_btn.prop('disabled', false);
                 player_name.text('name');
             } else {
                 join_game_btn.prop('disabled', true);
+
                 player_name.text(player.name);
 
                 if (i === main_player_pos) {
@@ -54,7 +56,8 @@ class GameroomDisplay {
 $(document).ready(function () {
     socket = io.connect('ws://localhost:3000');
 
-    var $join_game_btn = $(".join-game");
+    let $join_game_btn = $(".join-game");
+    let $on_load_btn = $(".on-load");
 
     socket.on("init", function (new_player, this_gameroom) {
         player = new_player;
@@ -70,8 +73,17 @@ $(document).ready(function () {
 
     $join_game_btn.on('click', function () {
         $join_game_btn.prop("disabled", true);
+        $(this).hide();
 
         let btn_pos = $(this).data('pos');
         socket.emit('join-game', btn_pos);
+
+        $(".on-load:nth(" + btn_pos + ")").show();
+    });
+
+    $on_load_btn.on('click', function () {
+        $(this).prop('disabled', true);
+        $(this).text("");
+        $(this).append($("<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>"));
     });
 })
