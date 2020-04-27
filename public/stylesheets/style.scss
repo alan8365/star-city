@@ -12,6 +12,16 @@ body {
   display: none;
 }
 
+.bet-btn {
+  display: none;
+}
+
+.bet-input {
+  width: 70px;
+  display: none;
+  text-align: center;
+}
+
 .one-card-row {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2));
@@ -87,3 +97,15 @@ body {
 //}
 
 //index
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

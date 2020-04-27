@@ -33,21 +33,30 @@ class GameroomDisplay {
                     join_game_btn.prop('disabled', false);
                 player_name.text('name');
             } else {
-                join_game_btn.prop('disabled', true);
+                switch (gameroom.turn) {
+                    case "waiting":
+                        join_game_btn.prop('disabled', true);
 
-                player_name.text(player.name);
+                        player_name.text(player.name);
 
-                on_load_btn.show();
-                join_game_btn.hide();
-                on_load_btn.prop('disabled', true);
+                        on_load_btn.show();
+                        join_game_btn.hide();
+                        on_load_btn.prop('disabled', true);
 
-                if (player.is_on_load) {
-                    on_load_btn.prop('disabled', true);
-                    on_load_btn.text("");
-                    on_load_btn.append($("<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>"));
-                } else if (i === main_player_pos) {
-                    player_name.addClass('main-player');
-                    on_load_btn.prop('disabled', false);
+                        if (player.is_on_load) {
+                            on_load_btn.prop('disabled', true);
+                            on_load_btn.text("");
+                            on_load_btn.append($("<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>"));
+                        } else if (i === main_player_pos) {
+                            player_name.addClass('main-player');
+                            on_load_btn.prop('disabled', false);
+                        }
+                        break;
+                    case "betting":
+                        on_load_btn.hide();
+                        break;
+                    case "standing":
+                        break;
                 }
             }
         }
