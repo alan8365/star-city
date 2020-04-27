@@ -9897,53 +9897,53 @@ body {
   text-align: center;
 }
 
-.one-card-row img:nth-child(2) {
+.card-row-1 img:nth-child(2) {
   left: calc(50% - calc(71px / 2));
 }
 
-.two-card-row img:nth-child(2) {
+.card-row-2 img:nth-child(2) {
   left: calc(50% - calc(71px / 2) - 10px);
 }
-.two-card-row img:nth-child(3) {
+.card-row-2 img:nth-child(3) {
   left: calc(50% - calc(71px / 2) + 10px);
 }
 
-.three-card-row img:nth-child(2) {
+.card-row-3 img:nth-child(2) {
   left: calc(50% - calc(71px / 2) - 20px);
 }
-.three-card-row img:nth-child(3) {
+.card-row-3 img:nth-child(3) {
   left: calc(50% - calc(71px / 2));
 }
-.three-card-row img:nth-child(4) {
+.card-row-3 img:nth-child(4) {
   left: calc(50% - calc(71px / 2) + 20px);
 }
 
-.four-card-row img:nth-child(2) {
+.card-row-4 img:nth-child(2) {
   left: calc(50% - calc(71px / 2) - 30px);
 }
-.four-card-row img:nth-child(3) {
+.card-row-4 img:nth-child(3) {
   left: calc(50% - calc(71px / 2) - 10px);
 }
-.four-card-row img:nth-child(4) {
+.card-row-4 img:nth-child(4) {
   left: calc(50% - calc(71px / 2) + 10px);
 }
-.four-card-row img:nth-child(5) {
+.card-row-4 img:nth-child(5) {
   left: calc(50% - calc(71px / 2) + 30px);
 }
 
-.five-card-row img:nth-child(2) {
+.card-row-5 img:nth-child(2) {
   left: calc(50% - calc(71px / 2) - 40px);
 }
-.five-card-row img:nth-child(3) {
+.card-row-5 img:nth-child(3) {
   left: calc(50% - calc(71px / 2) - 20px);
 }
-.five-card-row img:nth-child(4) {
+.card-row-5 img:nth-child(4) {
   left: calc(50% - calc(71px / 2));
 }
-.five-card-row img:nth-child(5) {
+.card-row-5 img:nth-child(5) {
   left: calc(50% - calc(71px / 2) + 20px);
 }
-.five-card-row img:nth-child(6) {
+.card-row-5 img:nth-child(6) {
   left: calc(50% - calc(71px / 2) + 40px);
 }
 

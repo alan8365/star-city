@@ -22,13 +22,13 @@ body {
   text-align: center;
 }
 
-.one-card-row {
+.card-row-1 {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2));
   }
 }
 
-.two-card-row {
+.card-row-2 {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2) - 10px);
   }
@@ -38,7 +38,7 @@ body {
   }
 }
 
-.three-card-row {
+.card-row-3 {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2) - 20px);
   }
@@ -52,7 +52,7 @@ body {
   }
 }
 
-.four-card-row {
+.card-row-4 {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2) - 30px);
   }
@@ -70,7 +70,7 @@ body {
   }
 }
 
-.five-card-row {
+.card-row-5 {
   img:nth-child(2) {
     left: calc(50% - calc(71px / 2) - 40px);
   }

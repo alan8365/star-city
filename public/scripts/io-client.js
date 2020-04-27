@@ -21,6 +21,8 @@ class GameroomDisplay {
 
         for (let i = 0; i < 5; i++) {
             let player = player_list[i];
+            let bet_btn = $(".bet-btn:nth(" + i + ")")
+            let bet_input = $(".bet-input:nth(" + i + ")")
             let on_load_btn = $(".on-load:nth(" + i + ")");
             let player_name = $(".player-name:nth(" + i + ")");
             let join_game_btn = $(".join-game:nth(" + i + ")");
@@ -53,7 +55,13 @@ class GameroomDisplay {
                         }
                         break;
                     case "betting":
+                        join_game_btn.hide();
                         on_load_btn.hide();
+                        bet_btn.show();
+                        bet_input.show();
+
+                        this.player_card_deck_update(player, i);
+
                         break;
                     case "standing":
                         break;
@@ -72,6 +80,20 @@ class GameroomDisplay {
         }
 
         return -1;
+    }
+
+    player_card_deck_update(player, player_pos) {
+        let $card_row = $(".card-row:nth(" + player_pos + ")");
+
+        $card_row.children().remove();
+
+        if (player.card_list.length === 0) {
+            $card_row.append("<img class='position-absolute' src='images/cards/empty.gif'>");
+        } else {
+            player.card_list.forEach(e => {
+                $card_row.append("<img class='position-absolute' src='images/cards/" + e + ".gif'>");
+            })
+        }
     }
 }
 
