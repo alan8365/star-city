@@ -1,4 +1,4 @@
-var IdentityThing = require("./identity").IdentityThing
+var IdentityThing = require("./identity").IdentityThing;
 
 class Player extends IdentityThing {
     constructor(props, context) {
@@ -6,6 +6,7 @@ class Player extends IdentityThing {
 
         this.card_list = [];
         this.name = this.id.slice(-4);
+        this.is_on_load = false;
     }
 }
 
@@ -16,4 +17,4 @@ class Dealer {
 
 }
 
-exports.Player = Player
+exports.Player = Player;

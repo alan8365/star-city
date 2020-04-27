@@ -20,9 +20,13 @@ class GameroomDisplay {
         let main_player_pos = this.get_player_index(this.main_player);
 
         for (let i = 0; i < 5; i++) {
-            let join_game_btn = $(".join-game:nth(" + i + ")")
-            let player_name = $(".player-name:nth(" + i + ")");
             let player = player_list[i];
+            let on_load_btn = $(".on-load:nth(" + i + ")");
+            let player_name = $(".player-name:nth(" + i + ")");
+            let join_game_btn = $(".join-game:nth(" + i + ")");
+
+            on_load_btn.hide();
+            join_game_btn.show();
 
             if (player == null) {
                 if (main_player_pos === -1)
@@ -33,8 +37,17 @@ class GameroomDisplay {
 
                 player_name.text(player.name);
 
-                if (i === main_player_pos) {
+                on_load_btn.show();
+                join_game_btn.hide();
+                on_load_btn.prop('disabled', true);
+
+                if (player.is_on_load) {
+                    on_load_btn.prop('disabled', true);
+                    on_load_btn.text("");
+                    on_load_btn.append($("<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>"));
+                } else if (i === main_player_pos) {
                     player_name.addClass('main-player');
+                    on_load_btn.prop('disabled', false);
                 }
             }
         }
@@ -64,12 +77,12 @@ $(document).ready(function () {
         gameroom = this_gameroom;
 
         gameroom_display = new GameroomDisplay(gameroom, player);
-    })
+    });
 
     socket.on("refresh", function (new_player, this_gameroom) {
         gameroom = this_gameroom;
         gameroom_display.origin_game_room = this_gameroom;
-    })
+    });
 
     $join_game_btn.on('click', function () {
         $join_game_btn.prop("disabled", true);
@@ -82,8 +95,10 @@ $(document).ready(function () {
     });
 
     $on_load_btn.on('click', function () {
-        $(this).prop('disabled', true);
-        $(this).text("");
-        $(this).append($("<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>"));
+        socket.emit('on-load')
     });
-})
+});
+
+function reset() {
+    socket.emit('reset');
+}
