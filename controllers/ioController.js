@@ -28,10 +28,44 @@ exports.on_connection = function (socket) {
         this.emit("refresh", player, gameroom);
     });
 
+    socket.on('stack-in', (stack) => {
+        player.stack = stack;
+
+        console.log(gameroom);
+
+        if (gameroom.is_all_bet_in()) {
+            gameroom.next_turn();
+        }
+
+        this.emit("refresh", player, gameroom);
+    })
+
+    socket.on('call', () => {
+        if (player.score < 10.5) {
+            player.get_card(gameroom.card_deck.pop());
+        }
+
+        if (gameroom.is_all_player_over()) {
+            gameroom.next_turn();
+        }
+
+        this.emit("refresh", player, gameroom);
+    })
+
+    socket.on('stand', () => {
+        player.is_stand = true;
+
+        if (gameroom.is_all_player_over()) {
+            gameroom.next_turn();
+        }
+
+        this.emit("refresh", player, gameroom);
+    })
+
     socket.on('reset', () => {
         gameroom = new Gameroom;
 
-        this.emit("refresh", player, gameroom);
+        this.emit('reset');
     });
 
     socket.on("disconnect", () => {

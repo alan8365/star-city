@@ -9887,6 +9887,10 @@ body {
   display: none;
 }
 
+.loading {
+  display: none;
+}
+
 .bet-btn {
   display: none;
 }
@@ -9895,6 +9899,22 @@ body {
   width: 70px;
   display: none;
   text-align: center;
+}
+
+.player-pocket {
+  display: none;
+}
+
+.call-btn {
+  display: none;
+}
+
+.stand-btn {
+  display: none;
+}
+
+.continue {
+  display: none;
 }
 
 .card-row-1 img:nth-child(2) {

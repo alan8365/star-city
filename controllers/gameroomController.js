@@ -1,4 +1,5 @@
 var IdentityThing = require("./identity").IdentityThing;
+var Player = require("./playerController").Player;
 
 const suit_list = ['s', 'h', 'd', 'c'];
 
@@ -14,6 +15,7 @@ class Gameroom extends IdentityThing {
 
         this.card_deck = this.init_card_deck();
         this.player_list = player_list;
+        this.dealer = new Player();
         this.turn = 'waiting';
     }
 
@@ -38,9 +40,11 @@ class Gameroom extends IdentityThing {
     init_deal_card() {
         this.player_list.forEach(player => {
             if (player != null) {
-                player.card_list.push(this.card_deck.pop());
+                player.get_card(this.card_deck.pop());
             }
         })
+
+        this.dealer.get_card(this.card_deck.pop());
     }
 
     next_turn() {
@@ -56,12 +60,71 @@ class Gameroom extends IdentityThing {
                 this.turn = "standing";
                 break;
             case "standing":
-                this.turn = "betting";
+                this.turn = "dealer";
+
+                this.dealer_acting();
+                this.set_settle();
+
+                this.player_list.forEach(e => {
+                    if (e != null) {
+                        e.is_on_load = false;
+                    }
+                })
+                break;
+            case "dealer":
+                this.turn = "waiting"
+
+                this.dealer.reset_in_game();
+                this.player_list.forEach(e => {
+                    if (e != null) {
+                        e.reset_in_game();
+                    }
+                })
+
+                // this.card_deck = this.init_card_deck();
                 break;
             default:
                 this.turn = "waiting";
                 break;
         }
+    }
+
+    dealer_acting() {
+        let maximum_score = 0;
+
+        for (let i = 0; i < this.player_list.length; i++) {
+            let player = this.player_list[i];
+
+            if (player != null && player.is_stand) {
+                maximum_score = player.score > maximum_score ? player.score : maximum_score;
+            }
+        }
+
+        let dealer = this.dealer;
+
+        while (dealer.score < maximum_score) {
+            dealer.get_card(this.card_deck.pop());
+        }
+    }
+
+    set_settle() {
+        this.player_list.forEach(e => {
+            if (e != null) {
+                if (e.is_busted) {
+                    return;
+                } else if (e.is_win) {
+                    e.get_pay(10);
+                } else {
+                    if (this.dealer.is_busted) {
+                        e.get_pay(2);
+                    }
+
+                    if (this.dealer.score < e.score) {
+                        e.get_pay(2);
+                    }
+                }
+            }
+        })
     }
 
     is_all_on_load() {
@@ -73,6 +136,30 @@ class Gameroom extends IdentityThing {
             let player = this.player_list[i];
 
             if (player != null && !player.is_on_load) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    is_all_bet_in() {
+        for (let i = 0; i < Gameroom.max_player_count; i++) {
+            let player = this.player_list[i];
+
+            if (player != null && player.stack == null) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    is_all_player_over() {
+        for (let i = 0; i < Gameroom.max_player_count; i++) {
+            let player = this.player_list[i];
+
+            if (player != null && !player.is_set_over()) {
                 return false;
             }
         }
